@@ -1,0 +1,23 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Do you want to upload a document?
+            <select formControlName="uploadDocument">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </label>
+    </div>
+    <div *ngIf="uploadDocument.value === 'yes'">
+        <input type="file" formControlName="document" />
+        <div *ngIf="uploadDocument.value == 'yes' && document.value == ''">
+            <div>Document is required</div>
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<br>
+<br>
+<div>
+    {{Errorlabel}}
+</div>
